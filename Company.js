@@ -20,8 +20,31 @@ export default class Company {
        return salary
     }
     getEmployeesMaxSalary() {
-        //TODO
-        //returns array of employees with maximal salary
+
+            const emp = Object.values(this.employees)
+            let salaryArray=[]
+            let result=[] 
+            for(let next of emp){
+            let key=next.name
+            let  value=next.computeSalary()
+            salaryArray.push( {[key]:value})     
+            }   
+            let max=salaryArray[0]
+            for(let next of salaryArray){      
+            if((Object.values(max))[0]<(Object.values(next))[0])       
+            max=next     
+            }
+            
+            for(let next of salaryArray){      
+                if((Object.values(max))[0]==(Object.values(next))[0])       
+                result.push(next)    
+                }
+                
+           
+            return result
+            
+    
+       
     }
     getEmployeesDepartment(department) {
         const result = Object.values(this.employees).filter(emp => emp.department === department);
